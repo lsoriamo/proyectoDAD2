@@ -1,0 +1,497 @@
+homeassistant:
+  # Name of the location where Home Assistant is running
+  name: Casa
+  # Location required to calculate the time the sun rises and sets
+  latitude: 37.3824
+  longitude: -5.9761
+  # Impacts weather/sunrise data (altitude above sea level in meters)
+  elevation: 9
+  # metric for Metric, imperial for Imperial
+  unit_system: metric
+  # Pick yours from here: http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+  time_zone: Europe/Madrid
+  # Customization file
+  customize: !include customize.yaml
+
+# Enables the frontend
+#  frontend:
+
+mqtt:
+                #embedded:
+                broker: 127.0.0.1
+                port: 1883
+                username: homeassistant
+                password: luismisoria_1985
+                client_id: home-assistant-1
+                keepalive: 60
+                birth_message:
+                        topic: "tele/hass1/LWT"
+                        payload: "Online"
+                        qos: 1
+                        retain: false
+                will_message:
+                        topic: "tele/hass1/LWT"
+                        payload: "Offline"
+                        qos: 1
+                        retain: false
+
+
+switch sonoff_ent:
+        - platform: mqtt
+          name: "Luz entradita"
+          state_topic: "stat/sonoff_ent/POWER"
+          command_topic: "cmnd/sonoff_ent/POWER"
+          availability_topic: "tele/sonoff_ent/LWT"
+          qos: 1
+          payload_on: "ON"
+          payload_off: "OFF"
+          payload_available: "Online"
+          payload_not_available: "Offline"
+          retain: false
+
+switch sonoff_ent_esp:
+        - platform: mqtt
+          name: "Luz espejo entradita"
+          state_topic: "stat/sonoff_ent_esp/POWER"
+          command_topic: "cmnd/sonoff_ent_esp/POWER"
+          availability_topic: "tele/sonoff_ent_esp/LWT"
+          qos: 1
+          payload_on: "ON"
+          payload_off: "OFF"
+          payload_available: "Online"
+          payload_not_available: "Offline"
+          retain: false
+
+switch sonoff_pasillo_pb:
+        - platform: mqtt
+          name: "Luz pasillo planta baja"
+          state_topic: "stat/sonoff_pasillo_pb/POWER"
+          command_topic: "cmnd/sonoff_pasillo_pb/POWER"
+          availability_topic: "tele/sonoff_pasillo_pb/LWT"
+          qos: 1
+          payload_on: "ON"
+          payload_off: "OFF"
+          payload_available: "Online"
+          payload_not_available: "Offline"
+          retain: false
+
+switch sonoff_aseo:
+        - platform: mqtt
+          name: "Luz aseo planta baja"
+          state_topic: "stat/sonoff_aseo/POWER"
+          command_topic: "cmnd/sonoff_aseo/POWER"
+          availability_topic: "tele/sonoff_aseo/LWT"
+          qos: 1
+          payload_on: "ON"
+          payload_off: "OFF"
+          payload_available: "Online"
+          payload_not_available: "Offline"
+          retain: false
+
+switch sonoff_esc_desp:
+        - platform: mqtt
+          name: "Luz escaleras despacho"
+          state_topic: "stat/sonoff_esc_desp/POWER"
+          command_topic: "cmnd/sonoff_esc_desp/POWER"
+          availability_topic: "tele/sonoff_esc_desp/LWT"
+          qos: 1      
+          payload_on: "ON"
+          payload_off: "OFF"  
+          payload_available: "Online"
+          payload_not_available: "Offline"    
+          retain: false
+          
+switch sonoff_desp:
+        - platform: mqtt
+          name: "Luz despacho"
+          state_topic: "stat/sonoff_desp/POWER"
+          command_topic: "cmnd/sonoff_desp/POWER"
+          availability_topic: "tele/sonoff_desp/LWT"
+          qos: 1      
+          payload_on: "ON"
+          payload_off: "OFF"  
+          payload_available: "Online"
+          payload_not_available: "Offline"    
+          retain: false
+          
+switch sonoff_salon1:
+        - platform: mqtt
+          name: "Luz salón"
+          state_topic: "stat/sonoff_salon1/POWER"
+          command_topic: "cmnd/sonoff_salon1/POWER"
+          availability_topic: "tele/sonoff_salon1/LWT"
+          qos: 1
+          payload_on: "ON"
+          payload_off: "OFF"
+          payload_available: "Online"
+          payload_not_available: "Offline"
+          retain: false
+
+switch sonoff_salon2:
+        - platform: mqtt
+          name: "Luz salón mesa comedor"
+          state_topic: "stat/sonoff_salon2/POWER"
+          command_topic: "cmnd/sonoff_salon2/POWER"
+          availability_topic: "tele/sonoff_salon2/LWT"
+          qos: 1
+          payload_on: "ON"
+          payload_off: "OFF"
+          payload_available: "Online"
+          payload_not_available: "Offline"
+          retain: false
+
+switch sonoff_coc1:
+        - platform: mqtt
+          name: "Luz cocina"
+          state_topic: "stat/sonoff_coc1/POWER"
+          command_topic: "cmnd/sonoff_coc1/POWER"
+          availability_topic: "tele/sonoff_coc1/LWT"
+          qos: 1
+          payload_on: "ON"
+          payload_off: "OFF"
+          payload_available: "Online"
+          payload_not_available: "Offline"
+          retain: false
+          
+switch sonoff_coc2:
+        - platform: mqtt
+          name: "Luz cocina pequeña"
+          state_topic: "stat/sonoff_coc2/POWER"
+          command_topic: "cmnd/sonoff_coc2/POWER"
+          availability_topic: "tele/sonoff_coc2/LWT"
+          qos: 1
+          payload_on: "ON"
+          payload_off: "OFF"
+          payload_available: "Online"
+          payload_not_available: "Offline"
+          retain: false
+
+switch sonoff_patio1:
+        - platform: mqtt
+          name: "Luz porche"
+          state_topic: "stat/sonoff_patio1/POWER"
+          command_topic: "cmnd/sonoff_patio1/POWER"
+          availability_topic: "tele/sonoff_patio1/LWT"
+          qos: 1
+          payload_on: "ON"
+          payload_off: "OFF"
+          payload_available: "Online"
+          payload_not_available: "Offline"
+          retain: false
+
+switch sonoff_patio2:
+        - platform: mqtt
+          name: "Luz patio"
+          state_topic: "stat/sonoff_patio2/POWER"
+          command_topic: "cmnd/sonoff_patio2/POWER"
+          availability_topic: "tele/sonoff_patio2/LWT"
+          qos: 1        
+          payload_on: "ON"
+          payload_off: "OFF"    
+          payload_available: "Online"
+          payload_not_available: "Offline"      
+          retain: false
+
+
+switch sonoff_garaje:
+        - platform: mqtt
+          name: "Luz garaje"
+          state_topic: "stat/sonoff_garaje/POWER"
+          command_topic: "cmnd/sonoff_garaje/POWER"
+          availability_topic: "tele/sonoff_garaje/LWT"
+          qos: 1
+          payload_on: "ON"
+          payload_off: "OFF"
+          payload_available: "Online"
+          payload_not_available: "Offline"
+          retain: false
+          
+switch sonoff_esc_pb:
+        - platform: mqtt
+          name: "Luz escaleras"
+          state_topic: "stat/sonoff_esc_pb/POWER"
+          command_topic: "cmnd/sonoff_esc_pb/POWER"
+          availability_topic: "tele/sonoff_esc_pb/LWT"
+          qos: 1
+          payload_on: "ON"
+          payload_off: "OFF"
+          payload_available: "Online"
+          payload_not_available: "Offline"
+          retain: false
+
+switch sonoff_pas_pa:
+        - platform: mqtt
+          name: "Luz pasillo planta alta"
+          state_topic: "stat/sonoff_pas_pa/POWER"
+          command_topic: "cmnd/sonoff_pas_pa/POWER"
+          availability_topic: "tele/sonoff_pas_pa/LWT"
+          qos: 1
+          payload_on: "ON"
+          payload_off: "OFF"
+          payload_available: "Online"
+          payload_not_available: "Offline"
+          retain: false
+
+switch sonoff_vest:
+        - platform: mqtt
+          name: "Luz vestidor"
+          state_topic: "stat/sonoff_vest/POWER"
+          command_topic: "cmnd/sonoff_vest/POWER"
+          availability_topic: "tele/sonoff_vest/LWT"
+          qos: 1
+          payload_on: "ON"
+          payload_off: "OFF"
+          payload_available: "Online"
+          payload_not_available: "Offline"
+          retain: false
+          
+switch sonoff_mat:
+        - platform: mqtt
+          name: "Luz habitación matrimonio"
+          state_topic: "stat/sonoff_mat/POWER"
+          command_topic: "cmnd/sonoff_mat/POWER"
+          availability_topic: "tele/sonoff_mat/LWT"
+          qos: 1
+          payload_on: "ON"
+          payload_off: "OFF"
+          payload_available: "Online"
+          payload_not_available: "Offline"
+          retain: false
+
+switch sonoff_bano_mat:
+        - platform: mqtt
+          name: "Luz baño matrimonio"
+          state_topic: "stat/sonoff_bano_mat/POWER"
+          command_topic: "cmnd/sonoff_bano_mat/POWER"
+          availability_topic: "tele/sonoff_bano_mat/LWT"
+          qos: 1
+          payload_on: "ON"
+          payload_off: "OFF"
+          payload_available: "Online"
+          payload_not_available: "Offline"
+          retain: false
+
+switch sonoff_inv:
+        - platform: mqtt
+          name: "Luz habitación invitados"
+          state_topic: "stat/sonoff_inv/POWER"
+          command_topic: "cmnd/sonoff_inv/POWER"
+          availability_topic: "tele/sonoff_inv/LWT"
+          qos: 1
+          payload_on: "ON"
+          payload_off: "OFF"
+          payload_available: "Online"
+          payload_not_available: "Offline"
+          retain: false
+
+switch sonoff_bano_inv:
+        - platform: mqtt
+          name: "Luz baño invitados"
+          state_topic: "stat/sonoff_bano_inv/POWER"
+          command_topic: "cmnd/sonoff_bano_inv/POWER"
+          availability_topic: "tele/sonoff_bano_inv/LWT"
+          qos: 1
+          payload_on: "ON"
+          payload_off: "OFF"
+          payload_available: "Online"
+          payload_not_available: "Offline"
+          retain: false
+
+switch sonoff_esc_ter:
+        - platform: mqtt
+          name: "Luz escaleras terraza"
+          state_topic: "stat/sonoff_esc_ter/POWER"
+          command_topic: "cmnd/sonoff_esc_ter/POWER"
+          availability_topic: "tele/sonoff_esc_ter/LWT"
+          qos: 1
+          payload_on: "ON"
+          payload_off: "OFF"
+          payload_available: "Online"
+          payload_not_available: "Offline"
+          retain: false
+          
+switch sonoff_ter:
+        - platform: mqtt
+          name: "Luz terraza"
+          state_topic: "stat/sonoff_ter/POWER"
+          command_topic: "cmnd/sonoff_ter/POWER"
+          availability_topic: "tele/sonoff_ter/LWT"
+          qos: 1
+          payload_on: "ON"
+          payload_off: "OFF"
+          payload_available: "Online"
+          payload_not_available: "Offline"
+          retain: false
+
+
+
+# Enables configuration UI
+config:
+
+frontend:
+
+http:
+  # Secrets are defined in the file secrets.yaml
+  #  api_password: !secret http_password
+  # Uncomment this if you are using SSL/TLS, running in Docker container, etc.
+  # base_url: example.duckdns.org:8123
+
+# Checks for available updates
+# Note: This component will send some information about your system to
+# the developers to assist with development of Home Assistant.
+# For more information, please see:
+# https://home-assistant.io/blog/2016/10/25/explaining-the-updater/
+updater:
+  # Optional, allows Home Assistant developers to focus on popular components.
+  # include_used_components: true
+
+# Discover some devices automatically
+discovery:
+
+# Allows you to issue voice commands from the frontend in enabled browsers
+conversation:
+
+# Enables support for tracking state changes over time
+history:
+
+# View all events in a logbook
+logbook:
+
+# Enables a map showing the location of tracked devices
+map:
+
+# Track the sun
+sun:
+
+
+# Text to speech
+tts:
+  - platform: google
+
+# Cloud
+cloud:
+
+group: !include groups.yaml
+automation: !include automations.yaml
+script: !include scripts.yaml
+sensor: !include sensors.yaml
+
+xiaomi_aqara:
+  gateways:
+        - host: 192.168.0.101
+          key: uffh4nizraznh3k4
+          mac: 34ce0091d5c9
+
+media_player ps4:
+          - platform: ps4
+            host: 192.168.0.114
+            name: 'PlayStation4'
+            filename: '/home/homeassistant/.homeassistant/custom_components/media_player/.ps4.wake.credentials.json'
+
+media_player kodi:
+        - platform: kodi
+          host: 192.168.0.116
+
+media_player plex:
+        - platform: plex
+     
+media_player chromecast:
+          - platform: cast
+
+google:
+          client_id: 572089351447-tf2mlvorjidpagrolium74k4jc3vs4fl.apps.googleusercontent.com
+          client_secret: 3SvOHn-4gectZAIoWOgcgTfw
+
+calendar todoist:
+        - platform: todoist
+          token: 25d9d1173fe692be0785ae7c5eeaf65f1f2e7f0d
+
+zone:       
+        - name: rosa_work
+          latitude: 37.368609
+          longitude: -5.888664
+          radius: 100
+
+        - name: luismi_work
+          latitude: 37.358145
+          longitude: -5.986420
+          radius: 100
+        - name: home
+          latitude: 37.289931
+          longitude: -5.928819
+          radius: 100          
+
+sensor trabajo_rosa:
+          - platform: google_travel_time
+            api_key: AIzaSyB-x4oYDNB_ENcCsO3pgFsYlsqOdgYgdis
+            origin: zone.home
+            destination: zone.rosa_work
+            name: Trabajo Rosa
+
+
+sensor trabajo_luismi:
+          - platform: google_travel_time
+            api_key: AIzaSyB-x4oYDNB_ENcCsO3pgFsYlsqOdgYgdis
+            origin: zone.home
+            destination: zone.luismi_work
+            name: Trabajo Luismi
+
+weather:
+          - platform: yweather
+            woeid: 774508
+ifttt:
+        key: bUIzmtVun7B8nKnssPhMX_
+
+sensor yr:
+  - platform: yr
+    name: Tiempo
+    forecast: 24
+    monitored_conditions:
+             - symbol
+             - temperature
+             - precipitation
+             - windSpeed
+             - humidity
+
+sensor energy:
+  - platform: efergy
+    app_token: DIgTrflsE1-Ibh5faznMVcKxF8L6QYVq
+    monitored_variables:
+      - type: instant_readings
+        #    - type: budget
+      - type: cost
+        period: day
+        currency: €
+      - type: amount
+        period: day
+      - type: current_values
+        #history_graph:
+        #gr1:
+        #        entities:
+        #                - energy.currency
+
+        #wemo:
+        #static:
+        #- 192.168.0.115
+
+camera:
+  platform: ffmpeg
+  name: Salon
+  input: -rtsp_transport tcp -i rtsp://admin:admin@192.168.0.102/11
+
+#hue:
+  #bridges:
+  #  - host: 192.168.0.102
+ 
+panel_iframe:
+  configurator:
+    title: Configurador
+    icon: mdi:wrench
+    url: http://192.168.0.103:3218
+
+media_player samsung:
+  - platform: samsungtv
+    host: 192.168.0.108
+    port: 8001
+    name: TV
+    mac: 40-16-3B-C8-1C-48
